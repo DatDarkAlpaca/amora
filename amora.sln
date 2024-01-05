@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "amora", "amora\amora.vcxproj", "{002D9B4D-DA80-4EDB-8DB8-F938BBFB0901}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{002D9B4D-DA80-4EDB-8DB8-F938BBFB0901}.Debug|x64.ActiveCfg = Debug|x64
+		{002D9B4D-DA80-4EDB-8DB8-F938BBFB0901}.Debug|x64.Build.0 = Debug|x64
+		{002D9B4D-DA80-4EDB-8DB8-F938BBFB0901}.Debug|x86.ActiveCfg = Debug|Win32
+		{002D9B4D-DA80-4EDB-8DB8-F938BBFB0901}.Debug|x86.Build.0 = Debug|Win32
+		{002D9B4D-DA80-4EDB-8DB8-F938BBFB0901}.Release|x64.ActiveCfg = Release|x64
+		{002D9B4D-DA80-4EDB-8DB8-F938BBFB0901}.Release|x64.Build.0 = Release|x64
+		{002D9B4D-DA80-4EDB-8DB8-F938BBFB0901}.Release|x86.ActiveCfg = Release|Win32
+		{002D9B4D-DA80-4EDB-8DB8-F938BBFB0901}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46DA5A40-FA01-4F4C-9F2B-59EC835AC86C}
+	EndGlobalSection
+EndGlobal
