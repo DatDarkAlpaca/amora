@@ -75,6 +75,11 @@
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
     <IncludePath>$(ProjectDir)src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)build\bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)build\intermediate\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <IncludePath>$(ProjectDir)src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -105,9 +110,9 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir)src;</AdditionalIncludeDirectories>
@@ -119,12 +124,18 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>Default</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;</AdditionalIncludeDirectories>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>Full</Optimization>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,11 +145,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\assets\event.c" />
+    <ClCompile Include="src\assets\scene.c" />
+    <ClCompile Include="src\assets\user.c" />
+    <ClCompile Include="src\assets\weapon.c" />
     <ClCompile Include="src\main.c" />
-    <ClCompile Include="src\pch.c" />
+    <ClCompile Include="src\scenes\main_scene.c" />
+    <ClCompile Include="src\scenes\play_scene.c" />
+    <ClCompile Include="src\scenes\walk_scene.c" />
+    <ClCompile Include="src\utils\file.c" />
+    <ClCompile Include="src\utils\input.c" />
+    <ClCompile Include="src\utils\random.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\assets\event.h" />
+    <ClInclude Include="src\assets\user.h" />
+    <ClInclude Include="src\assets\weapon.h" />
+    <ClInclude Include="src\common.h" />
+    <ClInclude Include="src\constants.h" />
+    <ClInclude Include="src\scenes\main_scene.h" />
+    <ClInclude Include="src\assets\scene.h" />
+    <ClInclude Include="src\scenes\play_scene.h" />
+    <ClInclude Include="src\scenes\walk_scene.h" />
+    <ClInclude Include="src\state.h" />
+    <ClInclude Include="src\utils\file.h" />
+    <ClInclude Include="src\utils\input.h" />
+    <ClInclude Include="src\utils\random.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\arena.txt" />
+    <Text Include="res\kys.txt" />
+    <Text Include="res\welcome_art.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
