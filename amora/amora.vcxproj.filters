@@ -48,6 +48,9 @@
     <ClCompile Include="src\assets\event.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\scenes\comecu_scene.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\file.h">
@@ -87,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\assets\event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\comecu_scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

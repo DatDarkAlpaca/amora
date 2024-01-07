@@ -4,6 +4,7 @@
 #include "scenes/main_scene.h"
 #include "scenes/play_scene.h"
 #include "scenes/walk_scene.h"
+#include "scenes/comecu_scene.h"
 
 void initialize_scenes()
 {
@@ -21,6 +22,10 @@ void initialize_scenes()
 	_state.scenes[2].initialize = walk_scene_initialize;
 	_state.scenes[2].display = walk_scene_display;
 	_state.scenes[2].update = walk_scene_update;
+
+	_state.scenes[3].initialize = comecu_scene_initialize;
+	_state.scenes[3].display = comecu_scene_display;
+	_state.scenes[3].update = comecu_scene_update;
 
 	transition_scene(1);
 }

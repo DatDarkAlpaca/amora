@@ -150,6 +150,7 @@
     <ClCompile Include="src\assets\user.c" />
     <ClCompile Include="src\assets\weapon.c" />
     <ClCompile Include="src\main.c" />
+    <ClCompile Include="src\scenes\comecu_scene.c" />
     <ClCompile Include="src\scenes\main_scene.c" />
     <ClCompile Include="src\scenes\play_scene.c" />
     <ClCompile Include="src\scenes\walk_scene.c" />
@@ -163,6 +164,7 @@
     <ClInclude Include="src\assets\weapon.h" />
     <ClInclude Include="src\common.h" />
     <ClInclude Include="src\constants.h" />
+    <ClInclude Include="src\scenes\comecu_scene.h" />
     <ClInclude Include="src\scenes\main_scene.h" />
     <ClInclude Include="src\assets\scene.h" />
     <ClInclude Include="src\scenes\play_scene.h" />

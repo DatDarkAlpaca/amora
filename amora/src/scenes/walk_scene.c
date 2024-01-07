@@ -18,10 +18,6 @@ bool walk_scene_initialize()
 
 bool walk_scene_display()
 {
-	printf("You have walk far from your previous location.\n\n");
-
-	// TODO: implement walk events
-
 	return true;
 }
 
@@ -32,9 +28,13 @@ void walk_scene_handle_command(char* _command)
 
 bool walk_scene_update()
 {
+	printf("You walk amidst the valley...\n\n");
+
 	wait_press();
 
-	swap_scene(1);
+	transition_scene(3);
+
+	// swap_scene(1);
 
 	return true;
 }
