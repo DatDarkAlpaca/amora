@@ -130,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir)src;</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <Optimization>Full</Optimization>
@@ -145,34 +145,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\assets\event.c" />
-    <ClCompile Include="src\assets\scene.c" />
-    <ClCompile Include="src\assets\user.c" />
-    <ClCompile Include="src\assets\weapon.c" />
-    <ClCompile Include="src\main.c" />
-    <ClCompile Include="src\scenes\comecu_scene.c" />
-    <ClCompile Include="src\scenes\main_scene.c" />
-    <ClCompile Include="src\scenes\play_scene.c" />
-    <ClCompile Include="src\scenes\walk_scene.c" />
-    <ClCompile Include="src\utils\file.c" />
-    <ClCompile Include="src\utils\input.c" />
-    <ClCompile Include="src\utils\random.c" />
+    <ClCompile Include="src\application\application.cpp" />
+    <ClCompile Include="src\console\console.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\assets\event.h" />
-    <ClInclude Include="src\assets\user.h" />
-    <ClInclude Include="src\assets\weapon.h" />
-    <ClInclude Include="src\common.h" />
-    <ClInclude Include="src\constants.h" />
-    <ClInclude Include="src\scenes\comecu_scene.h" />
-    <ClInclude Include="src\scenes\main_scene.h" />
-    <ClInclude Include="src\assets\scene.h" />
-    <ClInclude Include="src\scenes\play_scene.h" />
-    <ClInclude Include="src\scenes\walk_scene.h" />
-    <ClInclude Include="src\state.h" />
-    <ClInclude Include="src\utils\file.h" />
-    <ClInclude Include="src\utils\input.h" />
-    <ClInclude Include="src\utils\random.h" />
+    <ClInclude Include="src\application\application.hpp" />
+    <ClInclude Include="src\assets\user.hpp" />
+    <ClInclude Include="src\assets\weapon.hpp" />
+    <ClInclude Include="src\console\console.hpp" />
+    <ClInclude Include="src\constants.hpp" />
+    <ClInclude Include="src\scene\scene.hpp" />
+    <ClInclude Include="src\scene\scene_holder.hpp" />
+    <ClInclude Include="src\utils\file.hpp" />
+    <ClInclude Include="src\utils\random.hpp" />
+    <ClInclude Include="src\windows_header.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\arena.txt" />
