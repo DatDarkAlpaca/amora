@@ -2,6 +2,7 @@
 #include <numeric>
 #include <string>
 
+#include "physics/rigid_body.hpp"
 #include "utils/random.hpp"
 
 namespace amo
@@ -22,6 +23,9 @@ namespace amo
 		std::string name = "Guts";
 		uint32_t maxLife = 0, currentLife = 0;
 		uint32_t maxArmor = 0, currentArmor = 0;
+
+	public:
+		Rigidbody rigidbody;
 
 	public:
 		constexpr static inline uint32_t MaxLifeLower = 10;

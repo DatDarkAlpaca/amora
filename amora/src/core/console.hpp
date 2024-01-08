@@ -23,11 +23,11 @@ namespace amo
     public:
         void write(uint32_t x, uint32_t y, const CHAR_INFO& info);
 
-        void write_line(const Vec2& start, const Vec2& end, const CHAR_INFO& info);
+        void write_line(const vec2u& start, const vec2u& end, const CHAR_INFO& info);
 
-        void write_text_blob(const std::string& text, const Vec2& position, uint32_t attributes = 0);
+        void write_text_blob(const std::string& text, const vec2u& position, uint32_t attributes = 0);
 
-        void write_text(const std::string& text, const Vec2& position, uint32_t attributes = 0);
+        void write_text(const std::string& text, const vec2u& position, uint32_t attributes = 0);
 
         void write_rect(const Rect& rect, const CHAR_INFO& info);
 

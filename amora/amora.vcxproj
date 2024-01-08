@@ -156,6 +156,8 @@
     <ClInclude Include="src\common.hpp" />
     <ClInclude Include="src\core\scene.hpp" />
     <ClInclude Include="src\core\scene_holder.hpp" />
+    <ClInclude Include="src\physics\collision.hpp" />
+    <ClInclude Include="src\physics\rigid_body.hpp" />
     <ClInclude Include="src\utils\file.hpp" />
     <ClInclude Include="src\utils\random.hpp" />
     <ClInclude Include="src\utils\rect.hpp" />

@@ -9,4 +9,6 @@
 #include "utils/rect.hpp"
 #include "utils/timer.hpp"
 
+#include "physics/collision.hpp"
+
 #include "windows_header.hpp"

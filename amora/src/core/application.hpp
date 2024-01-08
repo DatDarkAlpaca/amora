@@ -37,7 +37,7 @@ namespace amo
 
 	private:
 		std::chrono::high_resolution_clock::time_point m_LastUpdate, m_LastDraw;
-		double m_DrawRate = 1000 / 25, m_UpdateRate = 0;
+		double m_DrawRate = 1000 / 24, m_UpdateRate = 0;
 
 	private:
 		bool m_Running = false;
