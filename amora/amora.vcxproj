@@ -149,6 +149,7 @@
     <ClCompile Include="src\console\console.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\scene\arena_scene.cpp" />
+    <ClCompile Include="src\scene\splash_scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\application\application.hpp" />
@@ -159,12 +160,13 @@
     <ClInclude Include="src\scene\arena_scene.hpp" />
     <ClInclude Include="src\scene\scene.hpp" />
     <ClInclude Include="src\scene\scene_holder.hpp" />
+    <ClInclude Include="src\scene\splash_scene.hpp" />
     <ClInclude Include="src\utils\direction.hpp" />
     <ClInclude Include="src\utils\file.hpp" />
     <ClInclude Include="src\utils\random.hpp" />
     <ClInclude Include="src\utils\rect.hpp" />
     <ClInclude Include="src\utils\vec2.hpp" />
-    <ClInclude Include="src\windows_header.h" />
+    <ClInclude Include="src\windows_header.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\arena.txt" />

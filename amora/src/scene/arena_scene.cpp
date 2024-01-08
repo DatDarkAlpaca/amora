@@ -1,6 +1,6 @@
 #pragma once
 #include "arena_scene.hpp"
-#include "windows_header.h"
+#include "windows_header.hpp"
 #include "console/console.hpp"
 
 namespace amo

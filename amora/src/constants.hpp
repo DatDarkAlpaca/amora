@@ -1,6 +1,8 @@
 #pragma once
 #include <numeric>
 
+#define NON_OWNING
+
 namespace amo
 {
 	constexpr uint32_t MaxLifeLower  = 10;

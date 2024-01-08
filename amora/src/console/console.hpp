@@ -2,7 +2,7 @@
 #include <functional>
 #include <string>
 
-#include "windows_header.h"
+#include "windows_header.hpp"
 #include "utils/rect.hpp"
 #include "utils/vec2.hpp"
 
@@ -24,6 +24,8 @@ namespace amo
         void write(uint32_t x, uint32_t y, const CHAR_INFO& info);
 
         void write_line(const Vec2& start, const Vec2& end, const CHAR_INFO& info);
+
+        void write_text_blob(const std::string& text, const Vec2& position, uint32_t attributes = 0);
 
         void write_text(const std::string& text, const Vec2& position, uint32_t attributes = 0);
 

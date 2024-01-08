@@ -14,22 +14,33 @@ namespace amo
 		return m_SceneHolder.add_scene(std::move(scene));
 	}
 
+	void Application::set_scene(uint32_t sceneIndex)
+	{
+		m_SceneHolder.set_current(sceneIndex);
+	}
+
 	void Application::update(double dt)
 	{
-		for (const auto& scene : m_SceneHolder)
-			scene->update(dt);
+		if (!m_SceneHolder.current())
+			return;
+
+		m_SceneHolder.current()->update(dt);
 	}
 
 	void Application::render()
 	{
-		for (const auto& scene : m_SceneHolder)
-			scene->render(&m_Console);			
+		if (!m_SceneHolder.current())
+			return;
+
+		m_SceneHolder.current()->render(&m_Console);
 	}
 
-	void Application::handle_event(INPUT_RECORD inputRecord)
+	void Application::handle_event(const INPUT_RECORD& inputRecord)
 	{
-		for (const auto& scene : m_SceneHolder)
-			scene->handle_event(inputRecord);
+		if (!m_SceneHolder.current())
+			return;
+
+		m_SceneHolder.current()->handle_event(inputRecord);
 	}
 
 	void Application::set_display_rate(double drawRate, double updateRate)

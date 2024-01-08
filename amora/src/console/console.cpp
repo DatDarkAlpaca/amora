@@ -1,5 +1,6 @@
 #include "console.hpp"
 #include <cmath>
+#include <sstream>
 
 namespace amo
 {
@@ -84,6 +85,19 @@ namespace amo
                 error += dx;
                 y0 += sy;
             }
+        }
+    }
+
+    void AmoraConsole::write_text_blob(const std::string& text, const Vec2& position, uint32_t attributes)
+    {
+        std::istringstream ss(text);
+
+        std::string line;
+        uint32_t index = 0;
+        while (std::getline(ss, line)) 
+        {
+            write_text(line, { position.x, position.y + index }, attributes);
+            ++index;
         }
     }
 

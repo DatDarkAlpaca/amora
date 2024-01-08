@@ -27,6 +27,9 @@
     <ClCompile Include="src\scene\arena_scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\scene\splash_scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\file.hpp">
@@ -53,7 +56,7 @@
     <ClInclude Include="src\scene\scene_holder.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\windows_header.h">
+    <ClInclude Include="src\windows_header.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\console\console.hpp">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\direction.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\splash_scene.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,9 +1,11 @@
 #pragma once
-#include "windows_header.h"
+#include "constants.hpp"
+#include "windows_header.hpp"
 
 namespace amo
 {
 	class AmoraConsole;
+	class SceneHolder;
 
 	class IScene
 	{
@@ -17,6 +19,12 @@ namespace amo
 
 		virtual void render(AmoraConsole*) { }
 
-		virtual void handle_event(INPUT_RECORD) { }
+		virtual void handle_event(const INPUT_RECORD&) { }
+
+	public:
+		inline void set_scene_holder(SceneHolder* holder) { this->holder = holder; }
+
+	protected:
+		NON_OWNING SceneHolder* holder = nullptr;
 	};
 }
