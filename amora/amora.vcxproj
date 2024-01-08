@@ -148,6 +148,7 @@
     <ClCompile Include="src\application\application.cpp" />
     <ClCompile Include="src\console\console.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\scene\arena_scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\application\application.hpp" />
@@ -155,10 +156,14 @@
     <ClInclude Include="src\assets\weapon.hpp" />
     <ClInclude Include="src\console\console.hpp" />
     <ClInclude Include="src\constants.hpp" />
+    <ClInclude Include="src\scene\arena_scene.hpp" />
     <ClInclude Include="src\scene\scene.hpp" />
     <ClInclude Include="src\scene\scene_holder.hpp" />
+    <ClInclude Include="src\utils\direction.hpp" />
     <ClInclude Include="src\utils\file.hpp" />
     <ClInclude Include="src\utils\random.hpp" />
+    <ClInclude Include="src\utils\rect.hpp" />
+    <ClInclude Include="src\utils\vec2.hpp" />
     <ClInclude Include="src\windows_header.h" />
   </ItemGroup>
   <ItemGroup>

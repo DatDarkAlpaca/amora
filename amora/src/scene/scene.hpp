@@ -1,4 +1,5 @@
 #pragma once
+#include "windows_header.h"
 
 namespace amo
 {
@@ -12,7 +13,7 @@ namespace amo
 	public:
 		virtual void initialize() { }
 
-		virtual void update() { }
+		virtual void update(double dt) { }
 
 		virtual void render(AmoraConsole*) { }
 
