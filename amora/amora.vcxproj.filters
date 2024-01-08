@@ -80,7 +80,5 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\welcome_art.txt" />
-    <Text Include="res\arena.txt" />
-    <Text Include="res\kys.txt" />
   </ItemGroup>
 </Project>

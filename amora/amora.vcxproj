@@ -169,8 +169,6 @@
     <ClInclude Include="src\windows_header.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="res\arena.txt" />
-    <Text Include="res\kys.txt" />
     <Text Include="res\welcome_art.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
