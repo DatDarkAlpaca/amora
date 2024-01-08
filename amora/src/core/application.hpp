@@ -1,8 +1,8 @@
 #pragma once
 #include <chrono>
 
-#include "console/console.hpp"
-#include "scene/scene_holder.hpp"
+#include "core/scene_holder.hpp"
+#include "core/console.hpp"
 
 namespace amo
 {
@@ -16,6 +16,8 @@ namespace amo
 
 	public:
 		uint32_t add_scene(std::unique_ptr<IScene> scene);
+
+		uint32_t add_overlay(std::unique_ptr<IScene> overlay);
 
 		void set_scene(uint32_t sceneIndex);
 

@@ -1,6 +1,6 @@
 #pragma once
+#include <core/scene.hpp>
 #include <numeric>
-#include "scene/scene.hpp"
 
 namespace amo
 {

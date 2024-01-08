@@ -1,10 +1,8 @@
 #pragma once
-#include <string>
 #include <numeric>
+#include <string>
 
-#include "utils/direction.hpp"
 #include "utils/random.hpp"
-#include "constants.hpp"
 
 namespace amo
 {
@@ -22,10 +20,14 @@ namespace amo
 	
 	public:
 		std::string name = "Guts";
-
-		Direction direction = Direction::DOWN;
 		uint32_t maxLife = 0, currentLife = 0;
 		uint32_t maxArmor = 0, currentArmor = 0;
-	};
 
+	public:
+		constexpr static inline uint32_t MaxLifeLower = 10;
+		constexpr static inline uint32_t MaxLifeUpper = 20;
+
+		constexpr static inline uint32_t MaxArmorLower = 10;
+		constexpr static inline uint32_t MaxArmorUpper = 20;
+	};
 }

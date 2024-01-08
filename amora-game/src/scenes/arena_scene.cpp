@@ -1,7 +1,7 @@
 #pragma once
+#include <core/console.hpp>
 #include "arena_scene.hpp"
 #include "windows_header.hpp"
-#include "console/console.hpp"
 
 namespace amo
 {
@@ -10,16 +10,16 @@ namespace amo
         constexpr float speed = 16.5f;
 
         if (GetAsyncKeyState(0x53) < 0)
-            y += speed * dt;
+            y += speed * (float)dt;
 
         if (GetAsyncKeyState(0x57) < 0)
-            y -= speed * dt;
+            y -= speed * (float)dt;
 
         if (GetAsyncKeyState(0x44) < 0)
-            x += speed * dt;
+            x += speed * (float)dt;
 
         if (GetAsyncKeyState(0x41) < 0)
-            x -= speed * dt;
+            x -= speed * (float)dt;
 	}
 
     void ArenaScene::render(amo::AmoraConsole* console)

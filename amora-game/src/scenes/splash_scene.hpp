@@ -1,7 +1,8 @@
 #pragma once
+#include <utils/timer.hpp>
+#include <core/scene.hpp>
 #include <numeric>
 #include <string>
-#include "scene/scene.hpp"
 
 namespace amo
 {
@@ -36,6 +37,6 @@ namespace amo
     private:
         uint32_t m_SelectedAttributes = FOREGROUND_RED | FOREGROUND_INTENSITY;
         ButtonLabel m_CurrentButton;
-        float m_SelectTimer = 0.2f, m_SelectTimerCurrent = 0.0f;
+        Timer m_Timer;
     };
 }

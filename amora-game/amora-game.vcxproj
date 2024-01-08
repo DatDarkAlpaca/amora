@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{002d9b4d-da80-4edb-8db8-f938bbfb0901}</ProjectGuid>
-    <RootNamespace>amora</RootNamespace>
+    <ProjectGuid>{7c046f6d-5b77-4cfb-a8b1-864b7ed76568}</ProjectGuid>
+    <RootNamespace>amoragame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -40,13 +40,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -112,10 +112,10 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)amora/src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,14 +128,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;</AdditionalIncludeDirectories>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <Optimization>Full</Optimization>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <LanguageStandard_C>Default</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)amora/src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,23 +141,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\core\application.cpp" />
-    <ClCompile Include="src\core\console.cpp" />
-    <ClCompile Include="src\core\scene_holder.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\scenes\arena_scene.cpp" />
+    <ClCompile Include="src\scenes\overlays\system_overlay.cpp" />
+    <ClCompile Include="src\scenes\splash_scene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\amora.hpp" />
-    <ClInclude Include="src\core\application.hpp" />
-    <ClInclude Include="src\core\console.hpp" />
-    <ClInclude Include="src\common.hpp" />
-    <ClInclude Include="src\core\scene.hpp" />
-    <ClInclude Include="src\core\scene_holder.hpp" />
-    <ClInclude Include="src\utils\file.hpp" />
-    <ClInclude Include="src\utils\random.hpp" />
-    <ClInclude Include="src\utils\rect.hpp" />
-    <ClInclude Include="src\utils\timer.hpp" />
-    <ClInclude Include="src\utils\vec2.hpp" />
-    <ClInclude Include="src\windows_header.hpp" />
+    <ClInclude Include="src\assets\user.hpp" />
+    <ClInclude Include="src\assets\weapon.hpp" />
+    <ClInclude Include="src\scenes\arena_scene.hpp" />
+    <ClInclude Include="src\scenes\overlays\system_overlay.hpp" />
+    <ClInclude Include="src\scenes\splash_scene.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\amora\amora.vcxproj">
+      <Project>{002d9b4d-da80-4edb-8db8-f938bbfb0901}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\welcome_art.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,6 +14,11 @@ namespace amo
 		return m_SceneHolder.add_scene(std::move(scene));
 	}
 
+	uint32_t Application::add_overlay(std::unique_ptr<IScene> overlay)
+	{
+		return m_SceneHolder.add_overlay(std::move(overlay));
+	}
+
 	void Application::set_scene(uint32_t sceneIndex)
 	{
 		m_SceneHolder.set_current(sceneIndex);
@@ -25,6 +30,9 @@ namespace amo
 			return;
 
 		m_SceneHolder.current()->update(dt);
+
+		for (const auto& overlay : m_SceneHolder.overlays())
+			overlay->update(dt);
 	}
 
 	void Application::render()
@@ -33,6 +41,9 @@ namespace amo
 			return;
 
 		m_SceneHolder.current()->render(&m_Console);
+
+		for (const auto& overlay : m_SceneHolder.overlays())
+			overlay->render(&m_Console);
 	}
 
 	void Application::handle_event(const INPUT_RECORD& inputRecord)
@@ -41,6 +52,9 @@ namespace amo
 			return;
 
 		m_SceneHolder.current()->handle_event(inputRecord);
+
+		for (const auto& overlay : m_SceneHolder.overlays())
+			overlay->handle_event(inputRecord);
 	}
 
 	void Application::set_display_rate(double drawRate, double updateRate)

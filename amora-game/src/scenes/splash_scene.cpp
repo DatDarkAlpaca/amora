@@ -1,16 +1,17 @@
 #pragma once
+#include <core/scene_holder.hpp>
+#include <core/console.hpp>
 #include <algorithm>
 
 #include "splash_scene.hpp"
-
-#include "scene/scene_holder.hpp"
-#include "console/console.hpp"
 #include "utils/file.hpp"
 
 namespace amo
 {
 	void SplashScene::initialize()
 	{
+		m_Timer.set_timer(0.2);
+
 		m_WelcomeArt = read_file("res/welcome_art.txt").value();
 		m_WelcomeArtWidth = m_WelcomeArt.find_first_of("\n");
 		m_WelcomeArtHeight = std::count(m_WelcomeArt.begin(), m_WelcomeArt.end(), '\n') + 1;
@@ -18,9 +19,9 @@ namespace amo
 
 	void SplashScene::update(double dt)
 	{
-		m_SelectTimerCurrent += dt;
+		m_Timer.update(dt);
 
-		if (m_SelectTimerCurrent < m_SelectTimer)
+		if (!m_Timer.complete())
 			return;
 
 		if (GetAsyncKeyState(VK_UP) < 0)
@@ -29,7 +30,7 @@ namespace amo
 				return;
 
 			m_CurrentButton = static_cast<ButtonLabel>((int)m_CurrentButton - 1);
-			m_SelectTimerCurrent = 0;
+			m_Timer.reset();
 		}
 
 		else if (GetAsyncKeyState(VK_DOWN) < 0)
@@ -38,7 +39,7 @@ namespace amo
 				return;
 
 			m_CurrentButton = static_cast<ButtonLabel>((int)m_CurrentButton + 1);
-			m_SelectTimerCurrent = 0;
+			m_Timer.reset();
 		}
 
 		else if (GetAsyncKeyState(VK_RETURN) < 0)
@@ -46,18 +47,19 @@ namespace amo
 			switch (m_CurrentButton)
 			{
 				case ButtonLabel::PLAY:
-				{
 					holder->set_current(1);
-				} break;
+					break;
 					
 				case ButtonLabel::CONFIG:
-					/* IMPLEMENT */
+					/* TODO: IMPLEMENT */
 					break;
 
 				case ButtonLabel::EXIT:
 					exit(0);
 					break;
 			}
+
+			m_Timer.reset();
 		}
 	}
 
