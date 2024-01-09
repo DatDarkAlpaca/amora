@@ -22,16 +22,32 @@ namespace amo
 	{
 		if (!lhs.isStatic)
 		{
-			if(lhs.velocity.x != 0)
-				lhs.position.x -= lhs.velocity.x > 0 ? 1 : -1;
+			if (lhs.velocity.x != 0)
+			{
+				auto inverseX = lhs.velocity.x > 0 ? -1 : 1;
+				lhs.position.x += inverseX;
+			}
 			
 			if (lhs.velocity.y != 0)
-				lhs.position.y -= lhs.velocity.y > 0 ? 1 : -1;
+			{
+				auto inverseY = lhs.velocity.y > 0 ? -1 : 1;
+				lhs.position.y += inverseY;
+			}
 		}
+
 		if (!rhs.isStatic)
 		{
-			rhs.velocity.x = -rhs.velocity.x;
-			rhs.velocity.y = -rhs.velocity.y;
+			if (rhs.velocity.x != 0)
+			{
+				auto inverseX = rhs.velocity.x > 0 ? -1 : 1;
+				rhs.position.x += inverseX;
+			}
+
+			if (rhs.velocity.y != 0)
+			{
+				auto inverseY = rhs.velocity.y > 0 ? -1 : 1;
+				rhs.position.y += inverseY;
+			}
 		}
 	}
 }

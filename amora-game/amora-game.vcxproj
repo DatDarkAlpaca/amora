@@ -147,6 +147,7 @@
     <ClCompile Include="src\scenes\splash_scene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\assets\gui_user.hpp" />
     <ClInclude Include="src\assets\map.hpp" />
     <ClInclude Include="src\assets\user.hpp" />
     <ClInclude Include="src\assets\weapon.hpp" />

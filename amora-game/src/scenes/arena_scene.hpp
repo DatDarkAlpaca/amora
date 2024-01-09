@@ -2,6 +2,7 @@
 #include <core/scene.hpp>
 #include <numeric>
 
+#include "assets/gui_user.hpp"
 #include "assets/user.hpp"
 #include "assets/map.hpp"
 
@@ -17,7 +18,16 @@ namespace amo
         void render(amo::AmoraConsole* console) override;
 
     private:
+        void initialize_weapon();
+
+        Weapon choose_weapon();
+
+    private:
+        GUIPlayer m_GUIUser;
         Map m_Map;
         User m_User;
+
+    private:
+        std::vector<Weapon> weapons;
     };
 }

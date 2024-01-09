@@ -47,6 +47,9 @@
     <ClInclude Include="src\assets\map.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\assets\gui_user.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\welcome_art.txt" />

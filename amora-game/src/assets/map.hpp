@@ -41,6 +41,22 @@ namespace amo
 			std::fill(m_Map.begin(), m_Map.end(), cell);
 		}
 
+		void render(AmoraConsole* console)
+		{
+			for (uint32_t y = 0; y < m_Height; ++y)
+			{
+				for (uint32_t x = 0; x < m_Width; ++x)
+				{
+					auto cell = m_Map[x + m_Width * y];
+
+					if (!cell.visible)
+						continue;
+
+					console->write(x, y, cell.info);
+				}
+			}
+		}
+
 	public:
 		void write(uint32_t x, uint32_t y, char character, bool visible = true)
 		{
