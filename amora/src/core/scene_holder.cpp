@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "scene_holder.hpp"
 
 namespace amo

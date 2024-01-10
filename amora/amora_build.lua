@@ -6,9 +6,6 @@ project "amora"
     targetdir(binaries_path .. "/%{prj.name}")
     objdir(intermediate_path .. "/%{prj.name}")
 
-    pchheader "pch.h"
-    pchsource "src/pch.cpp"
-
     files {
         "**.cpp",
         "**.hpp",
