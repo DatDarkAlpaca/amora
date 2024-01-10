@@ -2,6 +2,8 @@
 #include <optional>
 #include <fstream>
 #include <sstream>
+#include <ranges>
+#include <iostream>
 
 namespace amo
 {

@@ -9,6 +9,9 @@ namespace amo
 {
     void ArenaScene::initialize()
     {
+        m_SlashAnimation.initialize("res/slash/slash.anim", true);
+        m_SlashAnimation.set_position({ 20,20 });
+
         initialize_weapon();
 
         m_User.rigidbody.position.x = 5;
@@ -39,6 +42,9 @@ namespace amo
         for (uint32_t y = 10; y < 20; ++y)
             m_Map.write(18, y, wall);
 
+        for (uint32_t x = 5; x < 19; ++x)
+            m_Map.write(x, 20, wall);
+
         // GUI:
         m_GUIUser.set_map(m_Map);
         m_GUIUser.set_user(m_User);
@@ -47,6 +53,12 @@ namespace amo
     void ArenaScene::update(double dt)
     {
         m_User.update(dt);
+
+        // Slash:
+        if (GetAsyncKeyState(VK_SPACE) < 0)
+        {
+            m_SlashAnimation.update(dt);
+        }
 
         // Physics:
         for (uint32_t i = 0; i < m_Map.map().size(); ++i)
@@ -80,6 +92,8 @@ namespace amo
 
         // GUI:
         m_GUIUser.render(console);
+
+        m_SlashAnimation.render(console);
     }
 
     void ArenaScene::initialize_weapon()

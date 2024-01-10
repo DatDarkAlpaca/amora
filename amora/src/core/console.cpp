@@ -1,4 +1,6 @@
+#include "pch.h"
 #include "console.hpp"
+
 #include <cmath>
 #include <sstream>
 

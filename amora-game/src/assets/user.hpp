@@ -3,6 +3,7 @@
 #include <string>
 
 #include "physics/rigid_body.hpp"
+#include "utils/direction.hpp"
 #include "utils/random.hpp"
 #include "weapon.hpp"
 
@@ -30,17 +31,33 @@ namespace amo
 
 		void update(double dt)
 		{
+			direction = Direction::NONE;
+
 			if (GetAsyncKeyState(0x53) < 0)
+			{
 				rigidbody.velocity.y += rigidbody.speed * (float)dt;
+				direction = Direction::BOTTOM;
+			}
 
 			if (GetAsyncKeyState(0x57) < 0)
+			{
 				rigidbody.velocity.y -= rigidbody.speed * (float)dt;
+				direction = Direction::TOP;
+			}
 
 			if (GetAsyncKeyState(0x44) < 0)
+			{
 				rigidbody.velocity.x += rigidbody.speed * (float)dt;
+				direction = Direction::RIGHT;
+			}
 
 			if (GetAsyncKeyState(0x41) < 0)
+			{
 				rigidbody.velocity.x -= rigidbody.speed * (float)dt;
+				direction = Direction::LEFT;
+			}
+
+			update_sprite();
 
 			rigidbody.position.x += rigidbody.velocity.x;
 			rigidbody.position.y += rigidbody.velocity.y;
@@ -56,7 +73,7 @@ namespace amo
 		void render_player(NON_OWNING AmoraConsole* console)
 		{
 			CHAR_INFO info;
-			info.Char.AsciiChar = UserSprite;
+			info.Char.AsciiChar = m_UserSprite;
 			info.Attributes = UserAttribute;
 
 			console->write(
@@ -75,6 +92,33 @@ namespace amo
 			);
 		}
 
+	private:
+		void update_sprite()
+		{
+			switch (direction)
+			{
+				case Direction::LEFT:
+					m_UserSprite = '<';
+					break;
+
+				case Direction::RIGHT:
+					m_UserSprite = '>';
+					break;
+
+				case Direction::BOTTOM:
+					m_UserSprite = 'v';
+					break;
+
+				case Direction::TOP:
+					m_UserSprite = '^';
+					break;
+
+				default:
+					m_UserSprite = 'x';
+					break;
+			}
+		}
+
 	public:
 		std::string name = "Guts";
 		uint32_t maxLife = 0, currentLife = 0;
@@ -83,6 +127,10 @@ namespace amo
 	public:
 		Rigidbody rigidbody;
 		Weapon weapon;
+		Direction direction;
+
+	private:
+		char m_UserSprite = 'x';
 
 	public:
 		constexpr static inline uint32_t MaxLifeLower = 10;
@@ -92,7 +140,6 @@ namespace amo
 		constexpr static inline uint32_t MaxArmorUpper = 20;
 
 	private:
-		constexpr static inline char UserSprite = 'x';
 		constexpr static inline uint32_t UserAttribute = FOREGROUND_INTENSITY | FOREGROUND_RED;
 	};
 }

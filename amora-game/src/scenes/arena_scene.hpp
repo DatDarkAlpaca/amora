@@ -6,6 +6,9 @@
 #include "assets/user.hpp"
 #include "assets/map.hpp"
 
+#include <utils/frame.hpp>
+#include <core/animation.hpp>
+
 namespace amo
 {
     class ArenaScene : public amo::IScene
@@ -26,6 +29,9 @@ namespace amo
         GUIPlayer m_GUIUser;
         Map m_Map;
         User m_User;
+
+    private:
+        Animation m_SlashAnimation;
 
     private:
         std::vector<Weapon> weapons;
