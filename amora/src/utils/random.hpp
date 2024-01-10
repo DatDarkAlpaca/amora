@@ -4,12 +4,19 @@
 
 namespace amo
 {
-	class Random 
+	template<typename T>
+	class Random
 	{
 	public:
-		static uint32_t get(uint32_t lower, uint32_t upper)
+		static T get()
 		{
-			std::uniform_int_distribution<uint32_t> distribution(lower, upper);
+			std::uniform_int_distribution<T> distribution;
+			return distribution(m_Generator);
+		}
+
+		static T get(T lower, T upper)
+		{
+			std::uniform_int_distribution<T> distribution(lower, upper);
 			return distribution(m_Generator);
 		}
 

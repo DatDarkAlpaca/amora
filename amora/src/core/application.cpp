@@ -9,12 +9,12 @@ namespace amo
 		m_Running = true;
 	}
 
-	uint32_t Application::add_scene(std::unique_ptr<IScene> scene)
+	uint32_t Application::add_view(std::unique_ptr<IView> scene)
 	{
-		return m_SceneHolder.add_scene(std::move(scene));
+		return m_SceneHolder.add_view(std::move(scene));
 	}
 
-	uint32_t Application::add_overlay(std::unique_ptr<IScene> overlay)
+	uint32_t Application::add_overlay(std::unique_ptr<IView> overlay)
 	{
 		return m_SceneHolder.add_overlay(std::move(overlay));
 	}

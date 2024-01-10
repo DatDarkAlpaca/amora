@@ -1,10 +1,10 @@
 #pragma once
+#include <glm/glm.hpp>
 #include <functional>
 #include <string>
 
 #include "windows_header.hpp"
 #include "utils/rect.hpp"
-#include "utils/vec2.hpp"
 
 namespace amo
 {
@@ -23,11 +23,11 @@ namespace amo
     public:
         void write(uint32_t x, uint32_t y, const CHAR_INFO& info);
 
-        void write_line(const vec2u& start, const vec2u& end, const CHAR_INFO& info);
+        void write_line(const glm::vec2& start, const glm::vec2& end, const CHAR_INFO& info);
 
-        void write_text_blob(const std::string& text, const vec2u& position, uint32_t attributes = 0);
+        void write_text_blob(const std::string& text, const glm::vec2& position, uint32_t attributes = 0);
 
-        void write_text(const std::string& text, const vec2u& position, uint32_t attributes = 0);
+        void write_text(const std::string& text, const glm::vec2& position, uint32_t attributes = 0);
 
         void write_rect(const Rect& rect, const CHAR_INFO& info);
 

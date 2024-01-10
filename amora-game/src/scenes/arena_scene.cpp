@@ -1,6 +1,5 @@
 ﻿#pragma once
-#include <core/console.hpp>
-#include <physics/collision.hpp>
+#include <amora.hpp>
 
 #include "arena_scene.hpp"
 #include "windows_header.hpp"
@@ -9,91 +8,109 @@ namespace amo
 {
     void ArenaScene::initialize()
     {
-        m_SlashAnimation.initialize("res/slash/slash.anim", true);
-        m_SlashAnimation.set_position({ 20,20 });
-
         initialize_weapon();
 
-        m_User.rigidbody.position.x = 5;
-        m_User.rigidbody.position.y = 5;
-        m_User.weapon = choose_weapon();
+        // User:
+        {
+            CHAR_INFO playerSprite;
+            playerSprite.Char.AsciiChar = 'x';
+            playerSprite.Attributes = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY;
 
-        m_Map.resize(80, 30);
+            auto player = m_Scene.create_entity();
+            player.add_component<TransformComponent>(glm::vec2(5, 5));
+            player.add_component<SpriteComponent>(playerSprite);
+            player.add_component<MovementComponent>();
+            player.add_component<RigidbodyComponent>();
+        }
 
-        CHAR_INFO wall;
-        wall.Char.AsciiChar = ' ';
-        wall.Attributes = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY;
+        // Map:
+        {
+            constexpr uint32_t mapWidth = 80;
+            constexpr uint32_t mapHeight = 30;
 
-        for (uint32_t x = 0; x < m_Map.width(); ++x)
-            m_Map.write(x, 0, wall);
+            m_Scene.create_entity();
 
-        for (uint32_t x = 0; x < m_Map.width(); ++x)
-            m_Map.write(x, m_Map.height() - 1, wall);
+            CHAR_INFO wall;
+            wall.Char.AsciiChar = ' ';
+            wall.Attributes = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY;
 
-        for (uint32_t y = 0; y < m_Map.height(); ++y)
-            m_Map.write(0, y, wall);
+            for (uint32_t x = 0; x < mapWidth; ++x)
+            {
+                auto mapEntity = m_Scene.create_entity();
+                mapEntity.add_component<TransformComponent>(glm::vec2(x, 0.f));
+                mapEntity.add_component<SpriteComponent>(wall);
+            }
 
-        for (uint32_t y = 0; y < m_Map.height(); ++y)
-            m_Map.write(m_Map.width() - 1, y, wall);
+            for (uint32_t x = 0; x < mapWidth; ++x)
+            {
+                auto mapEntity = m_Scene.create_entity();
+                mapEntity.add_component<TransformComponent>(glm::vec2(x, mapHeight - 1));
+                mapEntity.add_component<SpriteComponent>(wall);
+            }
 
-        for (uint32_t y = 10; y < 20; ++y)
-            m_Map.write(5, y, wall);
+            for (uint32_t y = 0; y < mapHeight; ++y)
+            {
+                auto mapEntity = m_Scene.create_entity();
+                mapEntity.add_component<TransformComponent>(glm::vec2(0.f, y));
+                mapEntity.add_component<SpriteComponent>(wall);
+            }
 
-        for (uint32_t y = 10; y < 20; ++y)
-            m_Map.write(18, y, wall);
-
-        for (uint32_t x = 5; x < 19; ++x)
-            m_Map.write(x, 20, wall);
-
-        // GUI:
-        m_GUIUser.set_map(m_Map);
-        m_GUIUser.set_user(m_User);
+            for (uint32_t y = 0; y < mapHeight; ++y)
+            {
+                auto mapEntity = m_Scene.create_entity();
+                mapEntity.add_component<TransformComponent>(glm::vec2(mapWidth - 1, y));
+                mapEntity.add_component<SpriteComponent>(wall);
+            }
+        }
     }
 
     void ArenaScene::update(double dt)
     {
-        m_User.update(dt);
-
-        // Slash:
-        if (GetAsyncKeyState(VK_SPACE) < 0)
-        {
-            m_SlashAnimation.update(dt);
-        }
-
-        // Physics:
-        for (uint32_t i = 0; i < m_Map.map().size(); ++i)
-        {
-            auto x = i % m_Map.width();
-            auto y = (i - x) / m_Map.width();
-
-            if (!m_Map.map()[x + m_Map.width() * y].visible)
-                continue;
-
-            if (aabb_detection(m_User.rigidbody, vec2u(x, y)))
-            {
-                Rigidbody wallBody;
-                wallBody.position = { (float)x, (float)y };
-                wallBody.isStatic = true;
-
-                collision_resolution(m_User.rigidbody, wallBody);
-            }
-        }
-
-        m_User.stop();
+        update_player_movement(dt);
     }
 
     void ArenaScene::render(amo::AmoraConsole* console)
     {
-        // Player:
-        m_User.render(console);
+        for (auto [_, transform, sprite] : m_Scene.m_Registry.view<TransformComponent, SpriteComponent>().each())
+            console->write((uint32_t)transform.position.x, (uint32_t)transform.position.y, sprite.data);
+    }
 
-        // Map:
-        m_Map.render(console);
+    void ArenaScene::update_player_movement(double dt)
+    {
+        auto view = m_Scene.m_Registry.view<TransformComponent, MovementComponent, RigidbodyComponent>();
 
-        // GUI:
-        m_GUIUser.render(console);
+        for (auto [_, transform, movement, rigidbody] : view.each())
+        {
+            if (GetAsyncKeyState(0x53) < 0)
+            {
+                rigidbody.velocity.y += rigidbody.speed * (float)dt;
+                movement.direction = Direction::BOTTOM;
+            }
 
-        m_SlashAnimation.render(console);
+            if (GetAsyncKeyState(0x57) < 0)
+            {
+                rigidbody.velocity.y -= rigidbody.speed * (float)dt;
+                movement.direction = Direction::TOP;
+            }
+
+            if (GetAsyncKeyState(0x44) < 0)
+            {
+                rigidbody.velocity.x += rigidbody.speed * (float)dt;
+                movement.direction = Direction::RIGHT;
+            }
+
+            if (GetAsyncKeyState(0x41) < 0)
+            {
+                rigidbody.velocity.x -= rigidbody.speed * (float)dt;
+                movement.direction = Direction::LEFT;
+            }
+
+            transform.position.x += rigidbody.velocity.x;
+            transform.position.y += rigidbody.velocity.y;
+
+            rigidbody.velocity.x = 0.f;
+            rigidbody.velocity.y = 0.f;
+        }
     }
 
     void ArenaScene::initialize_weapon()
@@ -105,6 +122,6 @@ namespace amo
 
     Weapon ArenaScene::choose_weapon()
     {
-        return weapons[Random::get(0, weapons.size() - 1)];
+        return weapons[Random<uint32_t>::get(0, (uint32_t)weapons.size() - 1)];
     }
 }

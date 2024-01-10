@@ -2,7 +2,6 @@
 #include <numeric>
 #include <string>
 
-#include "physics/rigid_body.hpp"
 #include "utils/direction.hpp"
 #include "utils/random.hpp"
 #include "weapon.hpp"
@@ -14,8 +13,8 @@ namespace amo
 	public:
 		explicit User()
 		{
-			maxArmor = amo::Random::get(MaxArmorLower, MaxArmorUpper);
-			maxLife = amo::Random::get(MaxLifeLower, MaxLifeUpper);
+			maxArmor = amo::Random<uint32_t>::get(MaxArmorLower, MaxArmorUpper);
+			maxLife = amo::Random<uint32_t>::get(MaxLifeLower, MaxLifeUpper);
 
 			currentArmor = maxArmor;
 			currentLife = maxLife;
@@ -33,6 +32,7 @@ namespace amo
 		{
 			direction = Direction::NONE;
 
+			/*
 			if (GetAsyncKeyState(0x53) < 0)
 			{
 				rigidbody.velocity.y += rigidbody.speed * (float)dt;
@@ -61,12 +61,13 @@ namespace amo
 
 			rigidbody.position.x += rigidbody.velocity.x;
 			rigidbody.position.y += rigidbody.velocity.y;
+			*/
 		}
 
 		void stop()
 		{
-			rigidbody.velocity.x = 0;
-			rigidbody.velocity.y = 0;
+			//rigidbody.velocity.x = 0;
+			//rigidbody.velocity.y = 0;
 		}
 	
 	private:
@@ -76,20 +77,22 @@ namespace amo
 			info.Char.AsciiChar = m_UserSprite;
 			info.Attributes = UserAttribute;
 
-			console->write(
+			/*console->write(
 				(uint32_t)rigidbody.position.x,
 				(uint32_t)rigidbody.position.y,
 				info
-			);
+			);*/
 		}
 
 		void render_health_overlay(NON_OWNING AmoraConsole* console)
 		{
+			/*
 			console->write_text(
 				"HP: " + std::to_string(currentLife) + "/" + std::to_string(maxLife),
 				{ (uint32_t)rigidbody.position.x - 4, (uint32_t)rigidbody.position.y - 1 },
 				FOREGROUND_BLUE
 			);
+			*/
 		}
 
 	private:
@@ -125,7 +128,6 @@ namespace amo
 		uint32_t maxArmor = 0, currentArmor = 0;
 
 	public:
-		Rigidbody rigidbody;
 		Weapon weapon;
 		Direction direction;
 

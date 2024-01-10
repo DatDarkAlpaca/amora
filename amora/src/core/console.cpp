@@ -46,7 +46,7 @@ namespace amo
         m_Buffer[x + m_Width * y] = info;
     }
 
-    void AmoraConsole::write_line(const vec2u& start, const vec2u& end, const CHAR_INFO& info)
+    void AmoraConsole::write_line(const glm::vec2& start, const glm::vec2& end, const CHAR_INFO& info)
     {
         int dx = std::abs((int)end.x - (int)start.x);
         int sx = start.x < end.x ? 1 : -1;
@@ -89,7 +89,7 @@ namespace amo
         }
     }
 
-    void AmoraConsole::write_text_blob(const std::string& text, const vec2u& position, uint32_t attributes)
+    void AmoraConsole::write_text_blob(const std::string& text, const glm::vec2& position, uint32_t attributes)
     {
         std::istringstream ss(text);
 
@@ -102,7 +102,7 @@ namespace amo
         }
     }
 
-    void AmoraConsole::write_text(const std::string& text, const vec2u& position, uint32_t attributes)
+    void AmoraConsole::write_text(const std::string& text, const glm::vec2& position, uint32_t attributes)
     {
         uint32_t index = 0;
         for (const auto& character : text)

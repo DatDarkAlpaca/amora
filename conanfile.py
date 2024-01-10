@@ -7,3 +7,4 @@ class AmoraRecipe(ConanFile):
 
     def requirements(self):
         self.requires('entt/3.12.2')
+        self.requires('glm/cci.20230113')

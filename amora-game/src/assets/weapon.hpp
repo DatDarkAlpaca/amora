@@ -8,6 +8,6 @@ namespace amo
 	{
 	public:
 		std::string name;
-		uint32_t damage;
+		uint32_t damag = 0;
 	};
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include <core/scene_holder.hpp>
+#include <core/view_holder.hpp>
 #include <core/console.hpp>
 #include <algorithm>
 

@@ -1,11 +1,11 @@
 #pragma once
-#include "common.hpp"
+#include <glm/glm.hpp>
 #include <string>
 
+#include "common.hpp"
 #include "core/console.hpp"
 #include "utils/frame.hpp"
 #include "utils/timer.hpp"
-#include "utils/vec2.hpp"
 
 namespace amo
 {
@@ -35,7 +35,7 @@ namespace amo
 		}
 
 	public:
-		void set_position(const vec2u& position)
+		void set_position(const glm::vec2& position)
 		{
 			m_Position = position;
 		}
@@ -73,7 +73,7 @@ namespace amo
 
 	private:
 		Timer m_Timer;
-		vec2u m_Position;
+		glm::vec2 m_Position;
 
 		bool m_PlayOnlyOnce;
 		bool m_AnimationOver = false;

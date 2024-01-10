@@ -1,17 +1,14 @@
 #pragma once
-#include <core/scene.hpp>
+#include <amora.hpp>
 #include <numeric>
 
 #include "assets/gui_user.hpp"
 #include "assets/user.hpp"
 #include "assets/map.hpp"
 
-#include <utils/frame.hpp>
-#include <core/animation.hpp>
-
 namespace amo
 {
-    class ArenaScene : public amo::IScene
+    class ArenaScene : public amo::IView
     {
     public:
         void initialize() override;
@@ -21,17 +18,16 @@ namespace amo
         void render(amo::AmoraConsole* console) override;
 
     private:
+        void update_player_movement(double dt);
+
+    private:
         void initialize_weapon();
 
         Weapon choose_weapon();
 
     private:
+        Scene m_Scene;
         GUIPlayer m_GUIUser;
-        Map m_Map;
-        User m_User;
-
-    private:
-        Animation m_SlashAnimation;
 
     private:
         std::vector<Weapon> weapons;

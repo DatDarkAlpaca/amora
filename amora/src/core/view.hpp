@@ -5,12 +5,12 @@
 namespace amo
 {
 	class AmoraConsole;
-	class SceneHolder;
+	class ViewHolder;
 
-	class IScene
+	class IView
 	{
 	public:
-		virtual ~IScene() = default;
+		virtual ~IView() = default;
 
 	public:
 		virtual void initialize() { }
@@ -22,9 +22,9 @@ namespace amo
 		virtual void handle_event(const INPUT_RECORD&) { }
 
 	public:
-		inline void set_scene_holder(SceneHolder* sceneHolder) { holder = sceneHolder; }
+		inline void set_scene_holder(ViewHolder* sceneHolder) { holder = sceneHolder; }
 
 	protected:
-		NON_OWNING SceneHolder* holder = nullptr;
+		NON_OWNING ViewHolder* holder = nullptr;
 	};
 }

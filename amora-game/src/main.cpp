@@ -12,8 +12,8 @@ int main()
     Application app("Amora v1.0", 120, 30);
     app.add_overlay(std::make_unique<SystemOverlay>());
 
-    app.add_scene(std::make_unique<SplashScene>());
-    app.add_scene(std::make_unique<ArenaScene>());
+    app.add_view(std::make_unique<SplashScene>());
+    app.add_view(std::make_unique<ArenaScene>());
 
     app.set_scene(0);
     app.run();

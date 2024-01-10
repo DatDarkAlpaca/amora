@@ -1,12 +1,12 @@
 #pragma once
 #include <utils/timer.hpp>
-#include <core/scene.hpp>
+#include <core/view.hpp>
 #include <numeric>
 #include <string>
 
 namespace amo
 {
-    class SplashScene : public amo::IScene
+    class SplashScene : public amo::IView
     {
         enum class ButtonLabel
         {

@@ -1,11 +1,11 @@
 #pragma once
-#include <core/scene.hpp>
+#include <core/view.hpp>
 #include <utils/timer.hpp>
 #include <numeric>
 
 namespace amo
 {
-    class SystemOverlay : public amo::IScene
+    class SystemOverlay : public amo::IView
     {
     public:
         void initialize() override;

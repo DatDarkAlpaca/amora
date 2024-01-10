@@ -1,7 +1,7 @@
 #pragma once
 #include <chrono>
 
-#include "core/scene_holder.hpp"
+#include "core/view_holder.hpp"
 #include "core/console.hpp"
 
 namespace amo
@@ -15,9 +15,9 @@ namespace amo
 		void run();
 
 	public:
-		uint32_t add_scene(std::unique_ptr<IScene> scene);
+		uint32_t add_view(std::unique_ptr<IView> scene);
 
-		uint32_t add_overlay(std::unique_ptr<IScene> overlay);
+		uint32_t add_overlay(std::unique_ptr<IView> overlay);
 
 		void set_scene(uint32_t sceneIndex);
 
@@ -32,7 +32,7 @@ namespace amo
 		void set_display_rate(double drawRate, double updateRate);
 
 	private:
-		SceneHolder m_SceneHolder;
+		ViewHolder m_SceneHolder;
 		AmoraConsole m_Console;
 
 	private:
