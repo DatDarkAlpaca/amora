@@ -18,7 +18,11 @@ namespace amo
         void render(amo::AmoraConsole* console) override;
 
     private:
+        void update_collisions(double dt);
+
         void update_player_movement(double dt);
+
+        void stop_movement();
 
     private:
         void initialize_weapon();
